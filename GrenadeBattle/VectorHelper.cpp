@@ -15,9 +15,13 @@ float VectorHelper::DotProduct(sf::Vector2f vec1, sf::Vector2f vec2)
 	return vec1.x * vec2.x + vec1.y * vec2.y;
 }
 
-float VectorHelper::CrossProduct(sf::Vector2f vec1, sf::Vector2f vec2)
+sf::Vector3f VectorHelper::CrossProduct(sf::Vector3f vec1, sf::Vector3f vec2)
 {
-	return vec1.x * vec2.y - vec1.y * vec2.x;
+	sf::Vector3f cross;
+	cross.x = vec1.y * vec2.z - vec1.z * vec2.y;
+	cross.y = vec1.z * vec2.x - vec1.x * vec2.z;
+	cross.z = vec1.z * vec2.y - vec1.y * vec2.x;
+	return cross;
 }
 
 sf::Vector2f VectorHelper::GetNormal(sf::Vector2f line)

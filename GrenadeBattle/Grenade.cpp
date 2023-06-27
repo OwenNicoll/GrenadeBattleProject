@@ -60,12 +60,35 @@ void Grenade::HandleCollision(SpriteObject& _other)
 				
 		// Practical Task - Reflection
 		 sf::Vector2f depth = GetCollisionDepth(_other);
-		sf::Vector2f line(depth.x, depth.y);
-		sf::Vector2f normal = VectorHelper::GetNormal(line);
-		normal = VectorHelper::Normalise(normal);
-		sf::Vector2f reflection = VectorHelper::Reflection(velocity, normal);
 
-		velocity = reflection;
+
+		 // We hit side of platform
+		 if (abs(depth.x) < abs(depth.y))
+		 {
+			 sf::Vector2f line(_other.GetSide());
+			 sf::Vector2f normal = VectorHelper::GetNormal(line);
+			 normal = VectorHelper::Normalise(normal);
+			 sf::Vector2f reflection = VectorHelper::Reflection(velocity, normal);
+			 velocity = reflection;
+			 
+		 }
+
+		 // We hit the top of platform
+		 else if (abs(depth.x) > abs(depth.y))
+		 {
+			 sf::Vector2f line(_other.GetTop());
+			 sf::Vector2f normal = VectorHelper::GetNormal(line);
+			 normal = VectorHelper::Normalise(normal);
+			 sf::Vector2f reflection = VectorHelper::Reflection(velocity, normal);
+			 velocity = reflection;
+		 }
+
+
+		
+		
+		
+
+		
 		if (canBounce)
 		{
 			bounceCounter++;

@@ -259,6 +259,25 @@ sf::Sprite SpriteObject::GetSprite()
 	return sprite;
 }
 
+sf::Vector2f SpriteObject::GetSide()
+{
+	sf::Vector2f topLeft = GetCollisionCentre() - GetBoundingRectSize() / 2.0f;
+	sf::Vector2f bottomLeft(topLeft.x, topLeft.y + GetBoundingRectSize().y);
+
+	sf::Vector2f leftSide = bottomLeft - topLeft;
+	return leftSide;
+}
+
+sf::Vector2f SpriteObject::GetTop()
+{
+	sf::Vector2f topLeft = GetCollisionCentre() - GetBoundingRectSize() / 2.0f;
+	sf::Vector2f topRight(topLeft.x + GetBoundingRectSize().x, topLeft.y);
+
+	sf::Vector2f topSide = topRight - topLeft;
+
+	return topSide;
+}
+
 void SpriteObject::SetColliding(bool _colliding)
 {
 	colliding = _colliding;

@@ -6,7 +6,7 @@ namespace VectorHelper {
 	float SquareMagnitude(sf::Vector2f vec);
 	float Magnitude(sf::Vector2f vec);
 	float DotProduct(sf::Vector2f vec1, sf::Vector2f vec2);
-	float CrossProduct(sf::Vector2f vec1, sf::Vector2f vec2);
+	sf::Vector3f CrossProduct(sf::Vector3f vec1, sf::Vector3f vec2);
 
 
 	sf::Vector2f GetNormal(sf::Vector2f line);

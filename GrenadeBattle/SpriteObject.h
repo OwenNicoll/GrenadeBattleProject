@@ -36,11 +36,15 @@ public:
 
 	sf::Sprite GetSprite();
 
+	sf::Vector2f GetSide();
+	sf::Vector2f GetTop();
+
+	sf::Vector2f GetBoundingRectSize();
 private:
 
 	sf::Vector2f GetCollisionCentre();
 	float GetBoundingCircleRadius();
-	sf::Vector2f GetBoundingRectSize();
+	
 	sf::FloatRect GetAABB();
 	CollisionType GetCollisionType();
 

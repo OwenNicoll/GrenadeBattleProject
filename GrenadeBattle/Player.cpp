@@ -77,14 +77,7 @@ void Player::Update(sf::Time frameTime)
 
 	// Set the sprite based on the current frame index
 
-	if (joystickIndex == 0)
-	{
-		spritePath = "Assets/player_1_walk_" + std::to_string(frameIndex) + ".png";
-	}
-	else if (joystickIndex == 1)
-	{
-		spritePath = "Assets/player_2_walk_" + std::to_string(frameIndex) + ".png";
-	}
+	
 	
 	
 

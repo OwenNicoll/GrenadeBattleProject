@@ -7,6 +7,6 @@ N - - - - - - - - - - - N
 N - - - - - - - - - - - N
 N - N N - - - - - N N - N
 N - - - - - - - - - - - N
-N - P - - N N N - - K - N
-N - - - - - - - - - - - N
+N - - - - N N N - - - - N
+N - P - - - - - - - K - N
 N N N N N N N N N N N N N
