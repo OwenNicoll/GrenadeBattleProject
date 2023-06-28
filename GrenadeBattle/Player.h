@@ -45,6 +45,8 @@ public:
     bool GetWin();
     void SetWin();
 
+    bool GetCanJump();
+
 private:
     
     sf::Clock clock;

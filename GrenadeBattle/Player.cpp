@@ -129,19 +129,6 @@ void Player::Update(sf::Time frameTime)
 		}
 		break;
 
-	case PhysicsType::POSITION_VERLET:
-	{
-		// Update acceleration
-		UpdateAcceleration();
-
-		sf::Vector2f lastFramePos = GetPosition();
-
-		// Calculate current fram's position
-		SetPosition( 2.0f*lastFramePos - twoFramesOldPos + acceleration * frameTime.asSeconds() * frameTime.asSeconds());
-
-		// Two frames ago (for next frame)
-		twoFramesOldPos = lastFramePos;
-	}
 	break;
 
 	case PhysicsType::VELOCITY_VERLET:
@@ -305,6 +292,17 @@ void Player::Update(sf::Time frameTime)
 	}
 
 
+	if (sf::Joystick::isButtonPressed(joystickIndex, sf::Joystick::X))
+	{
+
+		if (canJump)
+		{
+			velocity.y = -2000;
+			canJump = false;
+		}
+
+	}
+
 	SpriteObject::Update(frameTime);
 
 }
@@ -329,15 +327,23 @@ void Player::HandleCollision(SpriteObject& _other)
 			if (velocity.y > 0 && depth.y < 0)
 			{
 				canJump = true;
-			}
 
-			// Move on y axis
+				// Move on y axis
+			
+				velocity.y = 0;
+				acceleration.y = 0;
+			}
+		
 			newPos.y += depth.y;
-			velocity.y = 0;
-			acceleration.y = 0;
+			
 		}
 
 		SetPosition(newPos);
+	}
+
+	if (_other.GetTag() == "Platform")
+	{
+
 	}
 
 	// Check if we collided with enemy grenade
@@ -407,6 +413,11 @@ void Player::SetWin()
 	win = true;
 }
 
+bool Player::GetCanJump()
+{
+	return canJump;
+}
+
 
 
 //Practical Task - Gravity Prediction
@@ -431,17 +442,7 @@ void Player::UpdateAcceleration()
 	acceleration.y = GRAVITY;
 	
 
-	if (sf::Joystick::isButtonPressed(joystickIndex, sf::Joystick::X))
-	{
-
-		if (canJump)
-		{
-
-			velocity.y = -JUMP;
-			canJump = false;
-		}
-		
-	}
+	
 	
 	if (GetLeftStickX() < -10)
 	{
@@ -455,6 +456,8 @@ void Player::UpdateAcceleration()
 	}
 
 }
+
+
 
 int Player::GetLives()
 {
