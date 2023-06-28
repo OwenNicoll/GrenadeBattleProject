@@ -20,7 +20,7 @@ sf::Vector3f VectorHelper::CrossProduct(sf::Vector3f vec1, sf::Vector3f vec2)
 	sf::Vector3f cross;
 	cross.x = vec1.y * vec2.z - vec1.z * vec2.y;
 	cross.y = vec1.z * vec2.x - vec1.x * vec2.z;
-	cross.z = vec1.z * vec2.y - vec1.y * vec2.x;
+	cross.z = vec1.x * vec2.y - vec1.y * vec2.x;
 	return cross;
 }
 

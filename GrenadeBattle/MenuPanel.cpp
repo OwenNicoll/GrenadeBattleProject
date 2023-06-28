@@ -44,5 +44,5 @@ void MenuPanel::Update(sf::Time frameTime)
 float MenuPanel::easingFunction(float t, float b, float c, float d)
 {
     t /= d;
-    return (c * (t * t)) / (d * d) + b;
+    return ((-c * t * t) / (d * d)) + ((2 * c * t) / d) + b;
 }
