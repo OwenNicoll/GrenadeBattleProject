@@ -75,8 +75,10 @@ void Player::Update(sf::Time frameTime)
 	// Calculate the current frame index based on elapsed time and animation speed
 	int frameIndex = static_cast<int>(elapsedTime / ANIMATION_SPEED) % FRAME_COUNT;
 
-	// Set the sprite based on the current frame index
+	spritePath = "Assets/player_1_walk_" + std::to_string(frameIndex) + ".png";
 
+	// Set the sprite based on the current frame index
+	
 	
 	
 	
