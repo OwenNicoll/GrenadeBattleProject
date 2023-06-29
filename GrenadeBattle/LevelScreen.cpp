@@ -165,12 +165,12 @@ void LevelScreen::Draw(sf::RenderTarget& target)
 	
 	for (int i = 0; i < 5; i++)
 	{
-		player.pipArray[i].Draw(target);
+		player.GetPipVector()[i].Draw(target);
 	}
 
 	for (int i = 0; i < 5; i++)
 	{
-		player2.pipArray[i].Draw(target);
+		player2.GetPipVector()[i].Draw(target);
 	}
 
 	for (int i = 0; i < player.GetGrenadeVector().size(); i++)

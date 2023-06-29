@@ -8,7 +8,6 @@
 Grenade::Grenade(sf::Vector2f position, sf::Vector2f velocity)
 	: velocity(velocity.x, velocity.y)
 	, acceleration(0, 1000)
-	, reflect(false)
 	, bounceCounter(0)
 	, canBounce(true)
 	

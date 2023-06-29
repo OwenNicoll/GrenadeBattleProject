@@ -201,7 +201,7 @@ void Player::Update(sf::Time frameTime)
 
 		if (initialVelocity.y <= 700)
 		{
-			initialVelocity.y += 1;
+			initialVelocity.y += 10;
 		}
 	}
 	else if (rightSticky < -10) 
@@ -214,7 +214,7 @@ void Player::Update(sf::Time frameTime)
 
 		if (initialVelocity.y >= -700)
 		{
-			initialVelocity.y -= 1;
+			initialVelocity.y -= 10;
 		}
 	}
 	else
@@ -239,7 +239,7 @@ void Player::Update(sf::Time frameTime)
 
 		if (initialVelocity.x <= 700)
 		{
-			initialVelocity.x += 1; 
+			initialVelocity.x += 10; 
 		}
 	}
 	else if (rightStickX < -10) 
@@ -252,7 +252,7 @@ void Player::Update(sf::Time frameTime)
 
 		if (initialVelocity.x >= -700)
 		{
-			initialVelocity.x -= 1; 
+			initialVelocity.x -= 10; 
 		}
 	}
 	else
@@ -270,19 +270,27 @@ void Player::Update(sf::Time frameTime)
 		}
 	}
 
+
+	for (int i = 0; i < 5; i++)
+	{
+		Pip newPip;
+		pipVector.push_back(newPip);
+	}
+	
+
 	//Practical Task - Gravity Prediction
-	pipArray[0].SetPosition(GetPipPosition(0));
-	pipArray[1].SetPosition(GetPipPosition(0.1f));
-	pipArray[2].SetPosition(GetPipPosition(0.2f));
-	pipArray[3].SetPosition(GetPipPosition(0.3f));
-	pipArray[4].SetPosition(GetPipPosition(0.4f));
+	pipVector[0].SetPosition(GetPipPosition(0));
+	pipVector[1].SetPosition(GetPipPosition(0.1f));
+	pipVector[2].SetPosition(GetPipPosition(0.2f));
+	pipVector[3].SetPosition(GetPipPosition(0.3f));
+	pipVector[4].SetPosition(GetPipPosition(0.4f));
 
 
 	initialPosition = GetPosition() + sf::Vector2f(25, 50);
 
 	for (int i = 0; i < 5; i++)
 	{
-		pipArray[i].Update(frameTime);
+		pipVector[i].Update(frameTime);
 	}
 
 
@@ -491,6 +499,11 @@ void Player::ClearGrenadeVector()
 			grenadeVector.erase(it);
 		}
 	}
+}
+
+std::vector<Pip> Player::GetPipVector()
+{
+	return pipVector;
 }
 
 

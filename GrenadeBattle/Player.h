@@ -39,7 +39,7 @@ public:
     
     void ClearGrenadeVector();
 
-    Pip pipArray[10];
+    std::vector<Pip> GetPipVector();
 
 
     bool GetWin();
@@ -49,6 +49,9 @@ public:
 
 private:
     
+    std::vector<Pip> pipVector;
+    
+
     sf::Clock clock;
 
     sf::Vector2f GetPipPosition(float t);

@@ -16,7 +16,6 @@ public:
 
     void HandleCollision(SpriteObject& _other) override;
 
-    bool reflect;
 
 private:
 
